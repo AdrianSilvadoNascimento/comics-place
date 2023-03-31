@@ -13,7 +13,7 @@ section {
 }
 
 .comics-bg {
-  width: 1020px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ section {
 }
 
 .search-bar {
-  width: 1065px;
+  width: 100%;
 }
 
 .input {
@@ -60,7 +60,7 @@ section {
 }
 
 .characters-bg {
-  width: 1045px;
+  width: 98%;
   padding: 35px 10px;
   margin-bottom: 25px;
   display: flex;
