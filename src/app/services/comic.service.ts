@@ -16,7 +16,7 @@ export class ComicService {
    * @returns - All Comics
    */
   fetchComic() {
-    return this.http.get(`${this.URL}/comics`)
+    return this.http.get(`${this.URL}comics`)
   }
 
   /**
