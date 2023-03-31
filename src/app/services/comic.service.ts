@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
+import { environment } from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 export class ComicService {
   constructor(private http: HttpClient) {}
 
-  private readonly URL = 'http://localhost:3004'
+  private readonly URL = environment.url || 'http://localhost:3004/'
 
   /**
    * Fetch all the comics to show.
@@ -25,7 +26,7 @@ export class ComicService {
    * @returns - The desired HQ.
    */
   getSpecificComic(comicId: string) {
-    return this.http.get(`${this.URL}/comics/uniqueComic/${comicId}`)
+    return this.http.get(`${this.URL}comics/uniqueComic/${comicId}`)
   }
 
   /**
@@ -33,10 +34,10 @@ export class ComicService {
    * @returns - all characters.
    */
   fetchCharacters() {
-    return this.http.get(`${this.URL}/characters`)
+    return this.http.get(`${this.URL}characters`)
   }
 
   fetchEvents() {
-    return this.http.get(`${this.URL}/events`)
+    return this.http.get(`${this.URL}events`)
   }
 }
