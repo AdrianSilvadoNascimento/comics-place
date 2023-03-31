@@ -15,6 +15,7 @@ export class ComicsComponent implements OnInit {
   characters: any
   hqName: string
   isLoading: boolean = false
+  isFiltering: boolean = false
 
   constructor(
     private comicService: ComicService,
@@ -40,7 +41,7 @@ export class ComicsComponent implements OnInit {
     this.isLoading = true
     this.comicService.fetchCharacters().subscribe(result => {
       this.characters = result
-      console.log(result)
+      console.log('characters:', result)
     })
   }
 
@@ -51,18 +52,22 @@ export class ComicsComponent implements OnInit {
   }
 
   searchHQ(characterName?: string) {
-    const filtered = this.comics.data.results.filter((comic: any) => {
+    const filtered =  this.comics.data.results.filter((comic: any) => {
       if (!characterName?.length) {
         if (comic.title.includes(this.hqName)){
           return comic
         }
       } else {
         if (comic?.characters?.items.length) {
-          return comic.characters.items.filter((character: any) => character.name.includes(characterName))
+          comic.characters.items.filter((character: any) => {
+            if (character.name === characterName) {
+              return comic
+            }
+          })
         }
       }
     })
 
-    console.log(filtered)
+    return this.comics = filtered.length ? filtered : this.comics
   }
 }

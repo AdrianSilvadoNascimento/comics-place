@@ -47,7 +47,7 @@ h2 {
   font-family: 'Coda', serif;
 }
 
-@media only screen and (max-width: 480px) and (min-width: 380px) {
+@media only screen and (max-width: 480px) and (min-width: 370px) {
   mat-toolbar {
     justify-content: center;
   }
