@@ -13,7 +13,7 @@ article {
   overflow-y: scroll;
 }
 
-@media only screen and (max-width: 412px) {
+@media only screen and (max-width: 480px) and (min-width: 380px) {
   section {
     position: relative;
     left: 50%;

@@ -80,7 +80,7 @@ textarea {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 
-@media only screen and (max-width: 412px) {
+@media only screen and (max-width: 480px) and (min-width: 380px) {
   section {
     flex-direction: column;
   }
