@@ -1,0 +1,3 @@
+export class ComicModel {
+  constructor() {}
+}

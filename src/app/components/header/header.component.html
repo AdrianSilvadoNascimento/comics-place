@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <h2 routerLink="/">Comics Place</h2>
+  <div class="menu-mobile">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <fa-icon [icon]="menuMobile" size="3x"></fa-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button routerLink="/" mat-menu-item>Comics</button>
+      <button routerLink="/contact" mat-menu-item>Contact</button>
+    </mat-menu>
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li>
+        <a routerLink="/">Comics</a>
+      </li>
+      <li>
+        <a routerLink="/contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

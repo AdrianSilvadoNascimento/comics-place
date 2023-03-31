@@ -1,0 +1,51 @@
+<div id="body">
+  <section>
+    <article>
+      <div class="search-bar">
+        <input
+          matInput
+          placeholder="Search by the title"
+          class="input"
+          [(ngModel)]="hqName"
+          (keydown.enter)="searchHQ()" />
+
+          <button
+            type="button"
+            mat-raised-button
+            (click)="searchHQ()"
+            [disabled]="!hqName?.length"
+          >
+          <i class="fa-solid fa-magnifying-glass"></i>
+          Search
+        </button>
+      </div>
+    </article>
+    <mat-progress-bar mode="indeterminate" *ngIf="this.isLoading; else isDone"></mat-progress-bar>
+    <ng-template #isDone>
+      <div class="characters-bg">
+        <div class="characters" *ngFor="let character of characters?.data?.results">
+          <div>
+            <button class="button-characters" mat-button (click)="searchHQ(character.name)">
+              {{ character.name }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <article class="comics-bg">
+        <ng-container *ngFor="let comic of comics?.data?.results">
+          <div class="comics-card-bg">
+            <a (click)="openDialog(comic.id)">
+              <img
+                matTooltipPosition="above"
+                matTooltip="{{ comic.title }}"
+                aria-label="Comic's thumbnail"
+                [src]="comic.thumbnail.path + '/portrait_fantastic.' + comic.thumbnail.extension"
+                [alt]="comic.title" />
+            </a>
+          </div>
+        </ng-container>
+      </article>
+    </ng-template>
+  </section>
+  <app-events class="events"></app-events>
+</div>

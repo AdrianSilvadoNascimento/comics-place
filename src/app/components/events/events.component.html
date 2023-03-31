@@ -1,0 +1,16 @@
+<section>
+  <article>
+    <div class="events-header">
+      <h2>Events</h2>
+    </div>
+
+    <mat-progress-bar mode="indeterminate" *ngIf="this.isLoading; else isDone"></mat-progress-bar>
+    <ng-template #isDone>
+      <div class="events-body">
+        <ng-container *ngFor="let event of events?.data?.results">
+          <p>{{ event.title }} - {{ event.end | date }}</p>
+        </ng-container>
+      </div>
+    </ng-template>
+  </article>
+</section>

@@ -1,0 +1,43 @@
+<section>
+  <article>
+    <div class="left"></div>
+  </article>
+  <article>
+    <div class="right">
+      <article>
+        <div class="events-header">
+          <h2>Contact</h2>
+        </div>
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+        <div class="events-body" *ngIf="!isLoading">
+          <form>
+            <input
+              matInput
+              class="input"
+              placeholder="Name" />
+            <input
+              matInput
+              class="input"
+              placeholder="E-mail" />
+            <textarea
+              matInput
+              name="description"
+              cols="5"
+              rows="10"
+              placeholder="Description"
+            ></textarea>
+
+            <button
+              type="button"
+              class="button"
+              (click)="send()"
+              [disabled]=""
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </article>
+    </div>
+  </article>
+</section>

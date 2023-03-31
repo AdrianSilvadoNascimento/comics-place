@@ -1,0 +1,103 @@
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.left {
+  width: 720px;
+  height: 800px;
+  background-image: url('../../../assets/imgs/marvel-banner.jpg');
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  background-position: center;
+}
+
+.right {
+  display: flex;
+  width: 550px;
+  height: 550px;
+  justify-content: center;
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.events-header {
+  width: 550px;
+}
+
+.right form input {
+  width: 90%;
+}
+
+.right form input, textarea, .button {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 25px;
+}
+
+textarea {
+  width: 90%;
+  resize: none;
+  padding: 15px;
+  color: #808080;
+  font-weight: 400;
+  background-color: #eee;
+  border-radius: 10px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.right, .left {
+  margin: 0 40px;
+}
+
+.button {
+  width: 120px;
+  height: 50px;
+  color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  background-color: #41D1FF;
+  border: none;
+  transition: 200ms ease-in;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: #00A7DC;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (max-width: 380px) {
+  section {
+    flex-direction: column;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    width: 80%;
+  }
+
+  .events-header {
+    width: 100%;
+  }
+
+  mat-progress-bar {
+    width: 100%;
+  }
+}

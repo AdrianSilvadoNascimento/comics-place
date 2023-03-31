@@ -1,0 +1,94 @@
+<mat-dialog-content class="mat-typography">
+  <mat-progress-bar *ngIf="isLoading; else isComicLoaded"></mat-progress-bar>
+  <ng-template #isComicLoaded>
+    <mat-card *ngIf="isBuy; else notBuy">
+      <mat-card-content>
+        <h2><strong>Congratulation!</strong></h2>
+        <p><strong>and thank you for your purchase</strong></p>
+
+        <p>Your HQ will be send to your address: {{ address }}</p>
+      </mat-card-content>
+    </mat-card>
+    <ng-template #notBuy>
+      <div *ngFor="let comic of comicModel?.data?.results">
+        <h1>{{ comic.title }}</h1>
+        <div class="dialog">
+          <div class="img-bg">
+            <img [src]="comic.images[0].path + '/portrait_incredible.' + comic.images[0].extension" alt="">
+          </div>
+
+          <div>
+            <p>{{ comic.creators.available > 1 ? 'Creators' : 'Creator' }}</p>
+            <ng-container *ngFor="let creator of comic.creators.items">
+              <p>{{ creator.name }} - <i>{{ creator.role }}</i></p>
+            </ng-container>
+            <h2><strong>Price: {{ comic.prices[0]?.price > 0 ? comic.prices[0]?.price * 5 : 4 * 5 | currency: "BRL" : 'symbol':'1.2-2' }}</strong></h2>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="interest">Are you interested in buying this?</h2>
+      <p>Is necessary to insert an address to buy this HQ.</p>
+
+      <div class="search-bar">
+        <input
+          matInput
+          #placesRef="ngx-places"
+          class="input"
+          placeholder="Enter an address here"
+          ngx-google-places-autocomplete
+          [options]="options"
+          [(ngModel)]="address"
+          (keydown.enter)="findAddress()"
+          [disabled]="isWorking" />
+
+        <button
+          type="button"
+          mat-raised-button
+          (click)="findAddress()"
+          [disabled]="isWorking || !address?.length"
+        >
+          Search
+        </button>
+
+        <button type="button" color="accent" mat-raised-button (click)="getCurrentAddress()" [disabled]="isWorking">
+          Find Me
+        </button>
+      </div>
+      <div class="map">
+        <google-map
+          height="300px"
+          width="650px"
+          [center]="mapCenter"
+          [options]="mapOptions"
+          [zoom]="mapZoom">
+
+          <map-marker
+            #marker="mapMarker"
+            [position]="mapCenter"
+            [options]="markerOptions"
+            (mapClick)="openInfoWindow(marker)"></map-marker>
+          <map-info-window>{{ markerInfoContent }}</map-info-window>
+        </google-map>
+      </div>
+    </ng-template>
+  </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" *ngIf="!isBuy; else buy">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    class="button-buy"
+    [disabled]="!address?.length"
+    (click)="buyHQ()"
+  >
+    Buy
+  </button>
+</mat-dialog-actions>
+<ng-template #buy>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="isBuy = !isBuy">Close</button>
+  </mat-dialog-actions>
+</ng-template>
+
+

@@ -1,0 +1,154 @@
+#body {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+section {
+  width: 1065px;
+  position: relative;
+  margin-bottom: 30px;
+  margin-right: 110px;
+  left: 40px;
+}
+
+.comics-bg {
+  width: 1020px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #d9d9d9;
+  padding: 77px 0;
+  border-radius: 15px;
+  overflow-y: auto;
+  height: 50vh;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-bar {
+  width: 1065px;
+}
+
+.input {
+  width: 80%;
+}
+
+.search-bar button {
+  padding: 22px;
+  background-color: #eee;
+  color: #808080;
+}
+
+.comics-card-bg {
+  width: 210px;
+}
+
+.comics-card-bg img {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  transition: 2s ease-in-out;
+}
+
+.comics-card-bg img:hover {
+  filter: brightness(1.35);
+  position: relative;
+  top: -20px;
+}
+
+.characters-bg {
+  width: 1045px;
+  padding: 35px 10px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  background-color: #eee;
+  gap: 20px;
+  border-radius: 15px;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.button-characters {
+  font-family: 'Coda', serif;
+}
+
+mat-progress-bar {
+  z-index: 1000;
+}
+
+.events {
+  width: 30%;
+  margin-right: 40px;
+}
+
+@media only screen and (max-width: 380px) {
+  #body {
+    display: block;
+  }
+
+  section {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+    left: 0;
+  }
+
+  .characters-bg {
+    width: 100%;
+    padding: 30px 0;
+    margin-bottom: 25px;
+    background-color: #eee;
+    border-radius: 0;
+  }
+
+  .events, section {
+    height: 100vh;
+  }
+
+  .comics-bg {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 70vh;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .comics-card-bg {
+    width: 120px;
+  }
+
+  .comics-card-bg img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    transition: 2s ease-in-out;
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  .search-bar {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search-bar button {
+    width: 60px;
+    height: 30px;
+  }
+
+  .input {
+    width: 80%;
+  }
+}
